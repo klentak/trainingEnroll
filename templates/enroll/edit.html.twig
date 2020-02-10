@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EnrollController!{% endblock %}
+
+{% block body %}
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-lg-12 heading bg-grey text-white d-flex justify-content-center">
+            <h1>Edit</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <h3>{{ training.name }}</h3>
+            <button id="add-exercise" class="add-exercise btn-no-style" type="button" data-toggle="modal" data-target="#myModal">----add----</button>
+        </div>
+    </div>
+</div>
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add exercise</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <iframe name="frame" style="display: none;"></iframe>
+                <form id="form-search" target="frame" method="post">
+                    <input id="input-search" class="input-control" name="search" type="text">
+                    <input id="btn-search" class="btn-no-style" name="submit" value="search" type="submit">
+                </form>
+                <div class="d-flex justify-content-center mt-3">
+                    <div class="d-flex" id="search-spinner" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <div id="results" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% block javascripts %} {{ encore_entry_script_tags('edit') }} {% endblock %}
+{% endblock %}
